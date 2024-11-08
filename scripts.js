@@ -113,32 +113,3 @@ function submitDefectiveForm() {
         alert(`Formulaire soumis avec succès !\nNom d'utilisateur : ${username}\nMot de passe : ${password}`);
     }
 }
-// Vérifier si l'utilisateur a scrollé jusqu'en bas de la page
-function isPageScrolledToBottom() {
-    return window.innerHeight + window.scrollY >= document.body.offsetHeight;
-}
-
-// Mettre en évidence les défauts dans la section problématique
-function highlightDefects() {
-    const defectiveRows = document.querySelectorAll('.text-danger');
-    defectiveRows.forEach(row => {
-        row.classList.add('highlight'); // Ajout d'une animation pour les défauts
-    });
-    alert("Remarquez que les défauts sont regroupés dans certaines parties du tableau. Ces zones nécessitent des tests approfondis.");
-}
-
-// Ajouter l'événement pour exécuter highlightDefects lorsque la page est complètement affichée et que le scroll est en bas
-function initHighlightDefectsOnScroll() {
-    let hasRun = false; // Pour empêcher l'exécution multiple de la fonction
-
-    // Détecter lorsque l'utilisateur a atteint le bas de la page
-    window.addEventListener('scroll', () => {
-        if (!hasRun && isPageScrolledToBottom()) {
-            highlightDefects();
-            hasRun = true; // Empêche la fonction de se relancer
-        }
-    });
-}
-
-// Attendre que la page soit entièrement chargée avant d'ajouter l'écouteur de scroll
-window.addEventListener('load', initHighlightDefectsOnScroll);
