@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principe 6 - Les tests dépendent du contexte</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/3.0.0-beta.6/aos.css">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="text-center p-5 bg-light">
+    <h1 data-aos="fade-down">Principe 6 : Les tests dépendent du contexte</h1>
+    <p class="lead" data-aos="fade-up">Comprenez ce principe grâce à cet exemple interactif.</p>
+</header>
+
+<section class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6" data-aos="fade-up">
+            <div class="card p-4">
+                <h2 class="mb-3">Tests Contextuels</h2>
+                <p>Ce formulaire se comporte différemment en fonction de l'appareil utilisé (ordinateur ou mobile). Redimensionnez la fenêtre ou utilisez un autre appareil pour voir les changements.</p>
+
+                <!-- Éléments de formulaire réactifs -->
+                <form id="context-form">
+                    <div class="mb-3">
+                        <label for="name">Nom :</label>
+                        <input type="text" id="name" class="form-control" placeholder="Entrez votre nom">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email">Email :</label>
+                        <input type="email" id="email" class="form-control" placeholder="Entrez votre email">
+                    </div>
+                    <!-- Composant contextuel basé sur le type d'appareil -->
+                    <div id="contextual-component" class="mb-3">
+                        <!-- Ce contenu changera en fonction de la taille de l'écran -->
+                    </div>
+                </form>
+
+                <!-- Bouton Retour à la Page Principale -->
+                <a href="index.html" class="btn btn-secondary mt-3">Retour à la page principale</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="text-center p-4 bg-dark text-white mt-5">
+    <p>&copy; Belhaj Ouajdi, 2024. Tous droits réservés.</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AOS JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/3.0.0-beta.6/aos.js"></script>
+<script>
+    AOS.init({
+        offset: 100,
+        delay: 50,
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+    });
+</script>
+
+<!-- GSAP JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script>
+    gsap.from("header", { duration: 1.5, opacity: 0, y: -50 });
+</script>
+
+<!-- JavaScript pour le comportement dépendant du contexte -->
+<script>
+    function updateContextualComponent() {
+        const component = document.getElementById('contextual-component');
+        const screenWidth = window.innerWidth;
+
+        // Effacer le contenu précédent du composant
+        component.innerHTML = '';
+
+        // Contexte pour ordinateur (écran large)
+        if (screenWidth > 768) {
+            component.innerHTML = `
+                    <label for="desktop-option">Option spécifique pour ordinateur :</label>
+                    <select id="desktop-option" class="form-control">
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                    </select>
+                `;
+        }
+        // Contexte pour mobile (écran étroit)
+        else {
+            component.innerHTML = `
+                    <label for="mobile-option">Entrée spécifique pour mobile :</label>
+                    <input type="text" id="mobile-option" class="form-control" placeholder="Entrez une valeur mobile">
+                `;
+        }
+    }
+
+    // Mettre à jour le composant lorsque la page charge et lorsque la fenêtre est redimensionnée
+    window.addEventListener('load', updateContextualComponent);
+    window.addEventListener('resize', updateContextualComponent);
+</script>
+</body>
+</html>

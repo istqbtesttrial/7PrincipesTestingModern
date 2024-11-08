@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principe 4 - Les défauts se regroupent</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/3.0.0-beta.6/aos.css">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="text-center p-5 bg-light">
+    <h1 data-aos="fade-down">Principe 4 : Les défauts se regroupent</h1>
+    <p class="lead" data-aos="fade-up">Comprenez ce principe grâce à cet exemple interactif.</p>
+</header>
+
+<section class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8" data-aos="fade-up">
+            <div class="card p-4">
+                <h2 class="mb-3">Tableau avec Défauts</h2>
+                <p>Certaines sections de ce tableau contiennent plusieurs défauts, tandis que d'autres sections fonctionnent correctement. Cela montre que les défauts se regroupent souvent dans certaines zones d'un système.</p>
+
+                <!-- Tableau interactif avec défauts -->
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <th>Statut</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Section correcte -->
+                    <tr>
+                        <td>1</td>
+                        <td>Jean Dupont</td>
+                        <td>jean.dupont@example.com</td>
+                        <td>(555) 555-1234</td>
+                        <td>Actif</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Marie Curie</td>
+                        <td>marie.curie@example.com</td>
+                        <td>(555) 555-5678</td>
+                        <td>Inactif</td>
+                    </tr>
+                    <!-- Section défectueuse -->
+                    <tr class="text-danger">
+                        <td>##</td> <!-- Erreur de format -->
+                        <td>Données Manquantes</td> <!-- Données manquantes -->
+                        <td>email-invalide.com</td> <!-- Email au format incorrect -->
+                        <td>(XXX) XXX-XXXX</td> <!-- Format de téléphone incorrect -->
+                        <td>
+                            <input type="button" value="Soumettre" disabled> <!-- Bouton non fonctionnel -->
+                        </td>
+                    </tr>
+                    <!-- Section correcte -->
+                    <tr>
+                        <td>3</td>
+                        <td>Élodie Martin</td>
+                        <td>elodie.martin@example.com</td>
+                        <td>(555) 555-9876</td>
+                        <td>Actif</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Paul Henri</td>
+                        <td>paul.henri@example.com</td>
+                        <td>(555) 555-4321</td>
+                        <td>Inactif</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <p class="text-danger mt-3">Remarquez l'accumulation de défauts dans une section. Ces zones nécessitent des tests plus approfondis.</p>
+
+                <!-- Bouton Retour à la Page Principale -->
+                <a href="index.html" class="btn btn-secondary mt-3">Retour à la page principale</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="text-center p-4 bg-dark text-white mt-5">
+    <p>&copy; Belhaj Ouajdi, 2024. Tous droits réservés.</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AOS JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/3.0.0-beta.6/aos.js"></script>
+<script>
+    AOS.init({
+        offset: 100,
+        delay: 50,
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+    });
+
+    // Fonction pour signaler les défauts sur la section problématique
+    function highlightDefects() {
+        const defectiveRows = document.querySelectorAll('.text-danger');
+        defectiveRows.forEach(row => {
+            row.style.transition = "background-color 0.5s ease-in-out";
+            row.style.backgroundColor = "#f8d7da";
+        });
+        alert("Remarquez que les défauts sont regroupés dans certaines parties du tableau.");
+    }
+</script>
+
+<!-- GSAP JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script>
+    gsap.from("header", { duration: 1.5, opacity: 0, y: -50 });
+</script>
+</body>
+</html>

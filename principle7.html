@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principe 7 - L'absence d'erreurs est une illusion</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/3.0.0-beta.6/aos.css">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="text-center p-5 bg-light">
+    <h1 data-aos="fade-down">Principe 7 : L'absence d'erreurs est une illusion</h1>
+    <button id="hidden-button" onclick="revealHiddenBug()" style="opacity: 0; position: absolute; top: 20px; right: 20px;">Bouton Caché</button>
+    <p class="lead" data-aos="fade-up">Comprenez ce principe grâce à cet exemple interactif.</p>
+</header>
+
+<section class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6" data-aos="fade-up">
+            <div class="card p-4">
+                <h2 class="mb-3">Défauts Cachés</h2>
+                <p>Ce bouton semble fonctionner correctement, mais des défauts cachés liés à la performance ou à la sécurité peuvent exister. Testez au-delà des fonctionnalités visibles pour révéler ces problèmes.</p>
+
+                <!-- Bouton d'envoi -->
+                <button id="submit-button" class="btn btn-primary" onclick="submitForm()">Soumettre</button>
+                <p id="message" class="mt-3 text-success" style="display: none;">Formulaire soumis avec succès ! Aucune erreur visible.</p>
+
+                <!-- Défaut caché qui apparaît après une enquête approfondie -->
+                <p id="hidden-issue" class="text-danger mt-3" style="display: none;">Défaut caché trouvé : Problème de performance ou de sécurité détecté !</p>
+
+                <!-- Bouton pour révéler le défaut caché -->
+                <button id="reveal-defect" class="btn btn-warning mt-3" onclick="revealDefect()" style="display: none;">Révéler le Défaut Caché</button>
+
+                <!-- Message de bug caché -->
+                <p id="hidden-bug-message" class="text-danger mt-3" style="display: none;">Ceci est un bug caché !</p>
+
+                <!-- Bouton Retour à la Page Principale -->
+                <a href="index.html" class="btn btn-secondary mt-3">Retour à la page principale</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="text-center p-4 bg-dark text-white mt-5">
+    <p>&copy; Belhaj Ouajdi, 2024. Tous droits réservés.</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AOS JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/3.0.0-beta.6/aos.js"></script>
+<script>
+    AOS.init({
+        offset: 100,
+        delay: 50,
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+    });
+</script>
+
+<!-- GSAP JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script>
+    gsap.from("header", { duration: 1.5, opacity: 0, y: -50 });
+</script>
+
+<!-- JavaScript pour les défauts cachés -->
+<script>
+    function submitForm() {
+        const message = document.getElementById('message');
+        const revealDefectButton = document.getElementById('reveal-defect');
+
+        // Afficher le message de succès
+        message.style.display = 'block';
+
+        // Activer le bouton pour révéler le défaut caché après l'envoi
+        revealDefectButton.style.display = 'block';
+    }
+
+    function revealDefect() {
+        const hiddenIssue = document.getElementById('hidden-issue');
+
+        // Afficher le défaut caché
+        hiddenIssue.style.display = 'block';
+    }
+
+    function revealHiddenBug() {
+        const hiddenBugMessage = document.getElementById('hidden-bug-message');
+
+        // Afficher le message du bug caché
+        hiddenBugMessage.style.display = 'block';
+    }
+</script>
+</body>
+</html>
